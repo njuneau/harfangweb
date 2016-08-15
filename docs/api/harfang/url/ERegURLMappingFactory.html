@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"><!-- use theme color or fallback -->
+<!--use textcolor from settings, otherwise create a contrasting color to theme color-->
+<head><meta charset="utf-8"/><link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet"/><link href="../../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/><link href="../../bootstrap/css/bootstrap-select.min.css" rel="stylesheet"/><link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,700italic,400italic" rel="stylesheet" type="text/css"/><link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600,600italic,400" rel="stylesheet" type="text/css"/><link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" type="text/css"/><script src="../../jquery-1.9.1.min.js"></script><script src="../../bootstrap/js/bootstrap.min.js"></script><script src="../../bootstrap/js/bootstrap-select.min.js"></script><link href="../../styles.css" rel="stylesheet"/><link href="../../haxe-nav.css" rel="stylesheet"/><script type="text/javascript">var dox = {rootPath: "../../",platforms: ["haxedoc"]};</script><script type="text/javascript" src="../../nav.js"></script><script type="text/javascript" src="../../index.js"></script><link rel="icon" href="../../favicon.ico" type="image/x-icon"></link><title>harfang.url.ERegURLMappingFactory - Harfang Web framework API documentation</title><meta name="description" content="This class contains various macros to generate URL mappings using a class'
+metadata."/></head><body><style>
+.navbar .brand {
+	display: inline-block;
+	float: none;
+	text-shadow: 0 0 0 transparent;
+</style><nav class="nav"><div class="navbar"><div class="navbar-inner" style="background:#FAFAFA; border-bottom:1px solid rgba(0,0,0,.09)"><div class="container"><a class="brand" style="color:#000000" href="../../">Harfang Web framework API documentation</a></div></div></div></nav><div class="container main-content"><div class="row-fluid"><div class="span3"><div class="well sidebar-nav"><form class="form-search" id="searchForm"><div class="input-prepend input-block-level"><span class="add-on"><i class="icon-search"></i></span><input id="search" type="text" placeholder="Search" autocomplete="off"/></div></form></div><div class="well sidebar-nav"><div id="nav"></div></div></div><div class="span9"><div class="page-header"><h1><small>class</small> ERegURLMappingFactory</h1><h4><small>package <a href="../../harfang/url/index.html">harfang.url</a></small></h4><h4><small>extends <a class="type" title="This class contains various macros to generate URL mappings using a class' metadata." href="../../harfang/url/URLMappingFactory.html">URLMappingFactory</a></small></h4>    </div><div class="body"><div class="doc doc-main"><div class="indent"><p>This class contains various macros to generate URL mappings using a class'
+metadata.</p></div></div><h3 class="section">Static methods</h3><div class="fields"><div class="field "><a name="createHttpMappingArray"></a><h3><p><code><span class="label">static</span><a href="#createHttpMappingArray"><span class="identifier">createHttpMappingArray</span></a> (<span style="white-space:nowrap">clExpr:<span class="type">Dynamic</span>,</span> <span style="white-space:nowrap">urlMetaTag:<span class="type">Dynamic</span>,</span> <span style="white-space:nowrap">?httpMethodMetaTag:<span class="type">Dynamic</span>,</span> <span style="white-space:nowrap">?prefix:<span class="type">Dynamic</span></span>):<span class="type">Dynamic</span></code></p></h3><div class="doc"><p>This will map a controller's methods to URLs using the given meta tag
+name. Use this macro inside a Module instance.</p>
+<p>This macro scans a controller for method metadata in order to generate
+mappings. This macro shouldn't have any dependency regarding the object
+it's called from, but it is most often used from a Module instance.</p>
+<p>To use this macro, annotate a controller's method like this:
+@URL("/")</p><p class="javadoc">Parameters:</p><table class="table table-bordered params"><tr><th width="25%"><code>clExpr</code></th><td><p>The controller's class (must be an implementation of the
+Controller interface)</p></td></tr><tr><th width="25%"><code>urlMetaTag</code></th><td><p>The metadata tag that will be used to extract the URL
+regular expression from a controller method. The URL meta tag must have
+at least one parameter : the URL pattern. A second parameter may be used
+for regular expression options.</p></td></tr><tr><th width="25%"><code>httpMethodMetaTag</code></th><td><p>Optional, the metadata tag that will be used to
+specify the HTTP method on which the URL mapping will be valid</p></td></tr><tr><th width="25%"><code>prefix</code></th><td><p>Optional, defines a string to prefix all of the
+controller's URL. In order for this to work, the URL meta tag must have
+3 parameters : the URL pattern, the regular expression's
+options and the string in your regular expression that will be replaced
+with the given prefix.</p></td></tr></table><p class="javadoc">Returns:</p><div class="indent inline-content"><p>An array of expressions containing all the ERegURLMapping
+instances that maps the controllers to URLs.</p></div></div></div><div class="field "><a name="mapHttpController"></a><h3><p><code><span class="label">static</span><a href="#mapHttpController"><span class="identifier">mapHttpController</span></a> (<span style="white-space:nowrap">eThis:<span class="type">Dynamic</span>,</span> <span style="white-space:nowrap">clExpr:<span class="type">Dynamic</span>,</span> <span style="white-space:nowrap">urlMetaTag:<span class="type">Dynamic</span>,</span> <span style="white-space:nowrap">?httpMethodMetaTag:<span class="type">Dynamic</span>,</span> <span style="white-space:nowrap">?prefix:<span class="type">Dynamic</span></span>):<span class="type">Dynamic</span></code></p></h3><div class="doc"><p>This will map a controller's methods to URLs using the given meta tag
+name. Use this macro inside an AbstractModule instance.</p>
+<p>This macro scans a controller for method metadata in order to generate
+mappings. This macro depends on AbstractModule's addURLMapping method.
+Thus, it can only be used with AbstractModule or a Module implementation
+that supports the same addURLMapping method signature.</p>
+<p>To use this macro, annotate a controller's method like this:
+@URL("/")</p><p class="javadoc">Parameters:</p><table class="table table-bordered params"><tr><th width="25%"><code>eThis</code></th><td><p>The module instance (must be a subclass of AbstractModule)</p></td></tr><tr><th width="25%"><code>clExpr</code></th><td><p>The controller's class (must be an implementation of the
+Controller interface)</p></td></tr><tr><th width="25%"><code>urlMetaTag</code></th><td><p>The metadata tag that will be used to extract the URL
+regular expression from a controller method. The URL meta tag must have
+at least one parameter : the URL pattern. A second parameter may be used
+for regular expression options.</p></td></tr><tr><th width="25%"><code>httpMethodMetaTag</code></th><td><p>Optional, the metadata tag that will be used to
+specify the HTTP method on which the URL mapping will be valid</p></td></tr><tr><th width="25%"><code>prefix</code></th><td><p>Optional parameter that defines a string to prefix all of
+the controller's URL. In order for this to work, the URL meta tag must
+have 3 parameters : the URL pattern, the regular expression's
+options and the string in your regular expression that will be replaced
+with the given prefix.</p></td></tr></table><p class="javadoc">Returns:</p><div class="indent inline-content"><p>The addURLMapping expressions that will map the controllers to
+URLs.</p></div></div></div></div>  <div class="inherited-fields well"><h3 class="section">Inherited Variables</h3><div class="fields"><div style="display:none"></div></div><h3 class="section">Inherited Methods</h3><div class="fields"><div style="display:none"></div></div></div></div></div></div></div><footer class="section site-footer" style="background:#FAFAFA"><div class="container"><div class="copyright"><p style="color:#000000">&copy; 2016 &nbsp;</p></div></div></footer><script src="../..//highlighter.js"></script><link href="../../highlighter.css" rel="stylesheet"/></body></html>
